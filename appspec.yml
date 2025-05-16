@@ -2,26 +2,26 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ec2-user/fintrack
+    destination: /opt/fintrack
     overwrite: true
 
 hooks:
   BeforeInstall:
     - location: before_install.sh
       timeout: 300
-      runas: ec2-user
+      runas: root
 
   AfterInstall:
     - location: after_install.sh
       timeout: 300
-      runas: ec2-user
+      runas: root
 
   ApplicationStart:
     - location: start_server.sh
       timeout: 300
-      runas: ec2-user
+      runas: root
 
   ApplicationStop:
     - location: stop_server.sh
       timeout: 300
-      runas: ec2-user
+      runas: root
