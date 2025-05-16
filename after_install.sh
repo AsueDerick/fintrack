@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /home/ec2-user/fintrack
+cd /opt/fintrack
 echo "Creating virtual environment and installing dependencies..."
 python3 -m venv venv
 source venv/bin/activate
