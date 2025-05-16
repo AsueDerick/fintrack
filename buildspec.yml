@@ -18,7 +18,6 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Running database migrations...
-      - python -c "from app import db; db.create_all()"  # Adjust `app` if it's in a package or module
       - echo Build phase complete
 
   post_build:
