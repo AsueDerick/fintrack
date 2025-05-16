@@ -1,0 +1,32 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11  # or change to your preferred version
+    commands:
+      - echo Installing dependencies...
+      - pip install --upgrade pip
+      - pip install -r requirements.txt
+
+  pre_build:
+    commands:
+      - echo Pre-build phase started
+      - python -m compileall .  # Optionally check for syntax errors
+
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Running database migrations...
+      - python -c "from app import db; db.create_all()"  # Adjust `app` if it's in a package or module
+      - echo Build phase complete
+
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo App is ready for deployment or containerization
+
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: no
